@@ -1,0 +1,1567 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- This makes the page render correctly (and at the right zoom level) on phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISHOLA STORE | Wholesale Prices, Direct to You</title>
+    <meta
+      name="description"
+      content="ISHOLA STORE — wholesale provisions, drinks, household & personal care items. Order directly on WhatsApp."
+    />
+
+    <style>
+      /* ============================================================
+     1. DESIGN TOKENS
+     Everything visual is driven from these variables. Change a
+     color/font here and it updates everywhere on the page.
+     ============================================================ */
+      :root {
+        /* Palette: inspired by a Nigerian shop invoice book — deep
+       indigo (trust, ledger-blue) + a warm naira-gold stamp accent,
+       on a clean paper-white. Not the generic cream/terracotta combo. */
+        --indigo-950: #0d1b3d;
+        --indigo-900: #132a5e;
+        --indigo-700: #1f3d82;
+        --gold-600: #c8932c;
+        --gold-500: #e0a935;
+        --paper: #f8f7f4;
+        --paper-dim: #eeece5;
+        --ink: #1a1a1a;
+        --ink-soft: #5b5b58;
+        --white: #ffffff;
+        --whatsapp: #25d366;
+        --line: #dedad0;
+
+        /* Type: a condensed grotesk for display (market signage energy)
+       paired with a plain, highly-readable body face. */
+        --font-display: "Archivo", "Arial Narrow", sans-serif;
+        --font-body: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+
+        --radius: 10px;
+        --shadow: 0 4px 14px rgba(13, 27, 61, 0.08);
+        --shadow-lg: 0 10px 30px rgba(13, 27, 61, 0.14);
+      }
+
+      /* Load two Google Fonts. If offline, the fallback stack above kicks in. */
+      @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap");
+
+      /* ============================================================
+     2. RESET
+     Basic reset so every browser (Safari on iPhone, Chrome on
+     Android, desktop browsers) starts from the same baseline.
+     ============================================================ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--paper);
+        color: var(--ink);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-display);
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+      }
+
+      /* Respect users who prefer less motion */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* ============================================================
+     3. HEADER / NAV
+     Sticky top bar: business name + a slim WhatsApp-first CTA.
+     Hamburger menu appears only on small screens.
+     ============================================================ */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--indigo-950);
+        color: var(--white);
+        box-shadow: var(--shadow);
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 20px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 8px;
+        background: linear-gradient(155deg, var(--gold-500), var(--gold-600));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: 18px;
+        color: var(--indigo-950);
+        flex-shrink: 0;
+      }
+      .brand-text .name {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 19px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+      .brand-text .tagline {
+        font-size: 11px;
+        color: #b9c2dc;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 28px;
+      }
+      nav a {
+        font-size: 14px;
+        font-weight: 600;
+        color: #dfe4f2;
+        transition: color 0.15s ease;
+      }
+      nav a:hover,
+      nav a:focus-visible {
+        color: var(--gold-500);
+      }
+
+      .header-cta {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .whatsapp-pill {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--whatsapp);
+        color: var(--white);
+        padding: 9px 16px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 13.5px;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+        white-space: nowrap;
+      }
+      .whatsapp-pill:hover,
+      .whatsapp-pill:focus-visible {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+      }
+      .whatsapp-pill svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
+
+      .menu-btn {
+        display: none;
+        width: 38px;
+        height: 38px;
+        color: var(--white);
+        flex-shrink: 0;
+      }
+
+      /* Mobile nav drawer */
+      #nav-toggle {
+        display: none;
+      } /* checkbox hack, since Anjorin knows this trick well */
+      @media (max-width: 860px) {
+        nav {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--indigo-900);
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.25s ease;
+        }
+        nav ul {
+          flex-direction: column;
+          gap: 0;
+          padding: 6px 0;
+        }
+        nav a {
+          display: block;
+          padding: 14px 20px;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        #nav-toggle:checked ~ nav {
+          max-height: 260px;
+        }
+        .menu-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .header-cta .whatsapp-pill span {
+          display: none;
+        } /* icon-only on small screens */
+      }
+      @media (max-width: 480px) {
+        .brand-text .tagline {
+          display: none;
+        }
+      }
+
+      /* ============================================================
+     4. HERO
+     Opens with the thing that matters most to a wholesale buyer:
+     "prices are wholesale, ordering is one tap away." The stamp
+     is the signature element — like an invoice stamp on a receipt.
+     ============================================================ */
+      .hero {
+        background:
+          radial-gradient(
+            circle at 15% 20%,
+            rgba(224, 169, 53, 0.1),
+            transparent 45%
+          ),
+          var(--indigo-950);
+        color: var(--white);
+        padding: 64px 0 76px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .hero-eyebrow {
+        display: inline-block;
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold-500);
+        margin-bottom: 14px;
+      }
+      .hero h1 {
+        font-size: clamp(32px, 5vw, 52px);
+        font-weight: 900;
+        color: var(--white);
+        margin-bottom: 16px;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--gold-500);
+      }
+      .hero p {
+        color: #c7cee2;
+        font-size: 16px;
+        max-width: 46ch;
+        margin-bottom: 28px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 22px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 14.5px;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .btn-primary {
+        background: var(--whatsapp);
+        color: var(--white);
+      }
+      .btn-primary:hover,
+      .btn-primary:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px rgba(37, 211, 102, 0.32);
+      }
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--white);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+      .btn-ghost:hover,
+      .btn-ghost:focus-visible {
+        background: rgba(255, 255, 255, 0.16);
+      }
+      .btn svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      /* the "stamp": a rotated circular badge, like a shop's ink stamp */
+      .stamp {
+        justify-self: center;
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        border: 3px dashed var(--gold-500);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transform: rotate(-9deg);
+        color: var(--gold-500);
+        font-family: var(--font-display);
+        font-weight: 800;
+        padding: 14px;
+      }
+      .stamp-inner {
+        border: 1px solid rgba(224, 169, 53, 0.5);
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .stamp span {
+        display: block;
+      }
+      .stamp .big {
+        font-size: 22px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+      .stamp .small {
+        font-size: 10.5px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #e7c98a;
+        margin-top: 6px;
+      }
+
+      @media (max-width: 860px) {
+        .hero-inner {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .hero p {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .hero-actions {
+          justify-content: center;
+        }
+        .stamp {
+          order: -1;
+          width: 150px;
+          height: 150px;
+        }
+        .stamp .big {
+          font-size: 18px;
+        }
+      }
+
+      /* ============================================================
+     5. INFO STRIP (address / hours / delivery — quick facts)
+     ============================================================ */
+      .info-strip {
+        background: var(--white);
+        border-bottom: 1px solid var(--line);
+      }
+      .info-strip .wrap {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        padding: 22px 20px;
+      }
+      .info-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .info-item svg {
+        width: 20px;
+        height: 20px;
+        color: var(--gold-600);
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .info-item .label {
+        font-size: 11.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--ink-soft);
+        font-weight: 700;
+      }
+      .info-item .value {
+        font-size: 14px;
+        font-weight: 600;
+      }
+      @media (max-width: 700px) {
+        .info-strip .wrap {
+          grid-template-columns: 1fr;
+          padding: 18px 20px;
+        }
+      }
+
+      /* ============================================================
+     6. PRODUCTS SECTION
+     Category filter (pure JS toggle) + responsive card grid.
+     ============================================================ */
+      .products {
+        padding: 60px 0 70px;
+      }
+      .section-head {
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .section-head .eyebrow {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold-600);
+        margin-bottom: 8px;
+        display: block;
+      }
+      .section-head h2 {
+        font-size: clamp(24px, 3.4vw, 34px);
+        font-weight: 800;
+        color: var(--indigo-950);
+      }
+      .section-head p {
+        color: var(--ink-soft);
+        margin-top: 8px;
+        font-size: 14.5px;
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 34px;
+      }
+      .filter-btn {
+        padding: 9px 18px;
+        border-radius: 999px;
+        border: 1.5px solid var(--line);
+        background: var(--white);
+        color: var(--ink-soft);
+        font-weight: 600;
+        font-size: 13.5px;
+        transition: all 0.15s ease;
+      }
+      .filter-btn:hover {
+        border-color: var(--gold-500);
+        color: var(--indigo-950);
+      }
+      .filter-btn.active {
+        background: var(--indigo-950);
+        border-color: var(--indigo-950);
+        color: var(--white);
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* laptop/desktop: 4 across */
+        gap: 22px;
+      }
+      .card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.18s ease,
+          box-shadow 0.18s ease;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+      .card-media {
+        aspect-ratio: 1/1;
+        background: linear-gradient(155deg, var(--paper-dim), #e4e0d4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--indigo-900);
+        opacity: 0.55;
+        position: relative;
+      }
+      .card-media svg {
+        width: 44px;
+        height: 44px;
+      }
+      .stock-tag {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: var(--indigo-950);
+        color: var(--gold-500);
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 4px 9px;
+        border-radius: 5px;
+      }
+      .card-body {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex: 1;
+      }
+      .card-body .cat {
+        font-size: 11px;
+        color: var(--ink-soft);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 700;
+      }
+      .card-body .name {
+        font-size: 15.5px;
+        font-weight: 700;
+        color: var(--indigo-950);
+      }
+      .card-body .unit {
+        font-size: 12.5px;
+        color: var(--ink-soft);
+      }
+      .card-body .price {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 19px;
+        color: var(--indigo-950);
+        margin-top: 4px;
+      }
+      .card-body .price small {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--ink-soft);
+      }
+
+      .order-btn {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--whatsapp);
+        color: var(--white);
+        padding: 11px;
+        border-radius: 0 0 var(--radius) var(--radius);
+        font-weight: 700;
+        font-size: 13.5px;
+        transition: background 0.15s ease;
+      }
+      .order-btn:hover,
+      .order-btn:focus-visible {
+        background: #1fb457;
+      }
+      .order-btn svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      /* Tablet: 2-3 columns */
+      @media (max-width: 1024px) and (min-width: 701px) {
+        .product-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      /* Phones: 2 columns (feels native to iOS/Android shopping apps) */
+      @media (max-width: 700px) {
+        .product-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 14px;
+        }
+        .card-body {
+          padding: 12px;
+        }
+        .card-body .name {
+          font-size: 13.5px;
+        }
+        .card-body .price {
+          font-size: 16.5px;
+        }
+        .order-btn {
+          padding: 10px;
+          font-size: 12px;
+        }
+      }
+
+      /* ============================================================
+     7. WHY US / TRUST STRIP
+     ============================================================ */
+      .trust {
+        background: var(--indigo-950);
+        color: var(--white);
+        padding: 50px 0;
+      }
+      .trust .wrap {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        text-align: center;
+      }
+      .trust-item .num {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: 30px;
+        color: var(--gold-500);
+      }
+      .trust-item .lbl {
+        font-size: 13px;
+        color: #c7cee2;
+        margin-top: 4px;
+      }
+      @media (max-width: 700px) {
+        .trust .wrap {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+      }
+
+      /* ============================================================
+     8. CONTACT / ADDRESS
+     ============================================================ */
+      .contact {
+        padding: 64px 0;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 36px;
+        box-shadow: var(--shadow);
+      }
+      .contact h3 {
+        font-size: 22px;
+        color: var(--indigo-950);
+        margin-bottom: 10px;
+      }
+      .contact p.lead {
+        color: var(--ink-soft);
+        font-size: 14.5px;
+        margin-bottom: 22px;
+      }
+      .contact-detail {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 16px;
+        align-items: flex-start;
+      }
+      .contact-detail svg {
+        width: 19px;
+        height: 19px;
+        color: var(--gold-600);
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .contact-detail .t {
+        font-size: 11.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--ink-soft);
+        font-weight: 700;
+      }
+      .contact-detail .d {
+        font-size: 14.5px;
+        font-weight: 600;
+      }
+
+      .social-row {
+        display: flex;
+        gap: 12px;
+        margin-top: 22px;
+        flex-wrap: wrap;
+      }
+      .social-btn {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 11px 16px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 13.5px;
+        transition: transform 0.15s ease;
+      }
+      .social-btn:hover,
+      .social-btn:focus-visible {
+        transform: translateY(-2px);
+      }
+      .social-btn svg {
+        width: 17px;
+        height: 17px;
+      }
+      .social-btn.wa {
+        background: var(--whatsapp);
+        color: var(--white);
+      }
+      .social-btn.ig {
+        background: linear-gradient(
+          45deg,
+          #f09433,
+          #e6683c,
+          #dc2743,
+          #cc2366,
+          #bc1888
+        );
+        color: var(--white);
+      }
+      .social-btn.tt {
+        background: var(--indigo-950);
+        color: var(--white);
+      }
+
+      .map-box {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        min-height: 260px;
+      }
+      .map-box iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 260px;
+        border: 0;
+      }
+
+      @media (max-width: 860px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+          padding: 24px;
+        }
+      }
+
+      /* ============================================================
+     9. FOOTER
+     ============================================================ */
+      footer {
+        background: var(--indigo-950);
+        color: #aab2ca;
+        padding: 30px 0;
+      }
+      footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      footer .foot-brand {
+        font-family: var(--font-display);
+        font-weight: 800;
+        color: var(--white);
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+      footer .foot-note {
+        font-size: 12.5px;
+      }
+
+      /* ============================================================
+     10. FLOATING WHATSAPP BUTTON (mobile-friendly, always reachable)
+     ============================================================ */
+      .float-wa {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 60;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--whatsapp);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        transition: transform 0.15s ease;
+      }
+      .float-wa:hover,
+      .float-wa:focus-visible {
+        transform: scale(1.08);
+      }
+      .float-wa svg {
+        width: 28px;
+        height: 28px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================================
+       HEADER
+       ============================================================ -->
+    <header>
+      <div class="header-inner wrap">
+        <div class="brand">
+          <div class="brand-mark">IS</div>
+          <div class="brand-text">
+            <div class="name">Ishola Store</div>
+            <div class="tagline">Wholesale &amp; Retail</div>
+          </div>
+        </div>
+
+        <!-- Checkbox hack for the mobile menu — no JS needed to open/close it -->
+        <input type="checkbox" id="nav-toggle" />
+
+        <nav>
+          <ul>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-cta">
+          <!-- REPLACE THE NUMBER BELOW with your real WhatsApp number in international
+             format, no plus sign, no spaces. Example: 2348012345678 -->
+          <a
+            class="whatsapp-pill"
+            href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20place%20an%20order"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+              />
+            </svg>
+            <span>Order on WhatsApp</span>
+          </a>
+          <label for="nav-toggle" class="menu-btn" aria-label="Open menu">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M3 6h18M3 12h18M3 18h18" />
+            </svg>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================================
+       HERO
+       ============================================================ -->
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div>
+          <span class="hero-eyebrow">Ilorin's Trusted Wholesale Point</span>
+          <h1>Buy in bulk, pay <em>wholesale</em> prices — every time.</h1>
+          <p>
+            Browse what's in stock right now. Tap any item and order straight
+            from WhatsApp — no forms, no waiting on hold.
+          </p>
+          <div class="hero-actions">
+            <a
+              class="btn btn-primary"
+              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20see%20today%27s%20price%20list"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+                />
+              </svg>
+              Chat on WhatsApp
+            </a>
+            <a class="btn btn-ghost" href="#products">See Products</a>
+          </div>
+        </div>
+        <div class="stamp">
+          <div class="stamp-inner">
+            <span>
+              <span class="big">Wholesale<br />Prices</span>
+              <span class="small">Ishola Store</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       QUICK INFO STRIP
+       ============================================================ -->
+    <section class="info-strip">
+      <div class="wrap">
+        <div class="info-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <div>
+            <div class="label">Store Address</div>
+            <!-- PLACEHOLDER ADDRESS — swap this for your real shop address -->
+            <div class="value">14 Ibrahim Taiwo Road, Ilorin, Kwara State</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+          </svg>
+          <div>
+            <div class="label">Opening Hours</div>
+            <div class="value">Mon – Sat, 8:00am – 7:00pm</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <rect x="1" y="6" width="15" height="12" rx="2" />
+            <path d="M16 10h3l4 4v4h-7z" />
+            <circle cx="6" cy="18" r="2" />
+            <circle cx="18" cy="18" r="2" />
+          </svg>
+          <div>
+            <div class="label">Delivery</div>
+            <div class="value">Available within Ilorin</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       PRODUCTS
+       Each card has a data-category attribute. The filter buttons
+       below use plain JS to show/hide cards — no page reload.
+       ============================================================ -->
+    <section class="products" id="products">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">What's Available</span>
+          <h2>In-Stock Right Now</h2>
+          <p>
+            Prices are per unit shown. Tap "Order on WhatsApp" to confirm
+            quantity &amp; delivery.
+          </p>
+        </div>
+
+        <div class="filters" id="filters">
+          <button class="filter-btn active" data-filter="all">All Items</button>
+          <button class="filter-btn" data-filter="food">
+            Food &amp; Provisions
+          </button>
+          <button class="filter-btn" data-filter="drinks">
+            Drinks &amp; Beverages
+          </button>
+          <button class="filter-btn" data-filter="household">Household</button>
+          <button class="filter-btn" data-filter="care">Personal Care</button>
+        </div>
+
+        <div class="product-grid" id="product-grid">
+          <!-- ===== FOOD & PROVISIONS ===== -->
+          <div class="card" data-category="food">
+            <div class="card-media">
+              <span class="stock-tag">In Stock</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M20 12H4l1.5 8h13L20 12z" />
+                <path d="M6 12l1-6h10l1 6" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="cat">Food &amp; Provisions</span>
+              <span class="name">Rice — 50kg Bag</span>
+              <span class="unit">Local Parboiled</span>
+              <span class="price">₦58,000 <small>/ bag</small></span>
+            </div>
+            <a
+              class="order-btn"
+              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Rice%20-%2050kg%20Bag"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+                />
+              </svg>
+              Order on WhatsApp
+            </a>
+          </div>
+
+          <div class="card" data-category="food">
+            <div class="card-media">
+              <span class="stock-tag">In Stock</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="M8 12h8M12 8v8" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="cat">Food &amp; Provisions</span>
+              <span class="name">Vegetable Oil — Carton (12 x 1L)</span>
+              <span class="unit">Kings / Power Oil</span>
+              <span class="price">₦26,500 <small>/ carton</small></span>
+            </div>
+            <a
+              class="order-btn"
+              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Vegetable%20Oil%20-%20Carton"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+                />
+              </svg>
+              Order on WhatsApp
+            </a>
+          </div>
+
+          <div class="card" data-category="food">
+            <div class="card-media">
+              <span class="stock-tag">In Stock</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="5" y="4" width="14" height="16" rx="2" />
+                <path d="M9 9h6M9 13h6" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="cat">Food &amp; Provisions</span>
+              <span class="name">Semovita — Carton (4 x 2kg)</span>
+              <span class="unit">Assorted Brands</span>
+              <span class="price">₦9,200 <small>/ carton</small></span>
+            </div>
+            <a
+              class="order-btn"
+              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Semovita%20-%20Carton"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+                />
+              </svg>
+              Order on WhatsApp
+            </a>
+          </div>
+
+          <!-- ===== DRINKS & BEVERAGES ===== -->
+          <div class="card" data-category="drinks">
+            <div class="card-media">
+              <span class="stock-tag">In Stock</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M8 3h8l-1 6a3 3 0 0 1-6 0L8 3z" />
+                <path d="M12 12v9M8 21h8" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="cat">Drinks &amp; Beverages</span>
+              <span class="name">Coca-Cola — Crate (35cl x 24)</span>
+              <span class="unit">Plastic Bottles</span>
+              <span class="price">₦8,800 <small>/ crate</small></span>
+            </div>
+            <a
+              class="order-btn"
+              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Coca-Cola%20-%20Crate"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+                />
+              </svg>
+              Order on WhatsApp
+            </a>
+          </div>
+
+          <div class="card" data-category="drinks">
+            <div class="card-media">
+              <span class="stock-tag">In Stock</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M8 3h8l-1 6a3 3 0 0 1-6 0L8 3z" />
+                <path d="M12 12v9M8 21h8" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="cat">Drinks &amp; Beverages</span>
+              <span class="name">Bottled Water — Pack (75cl x 20)</span>
+              <span class="unit">Table Water</span>
+              <span class="price">₦2,400 <small>/ pack</small></span>
+            </div>
+            <a
+              class="order-btn"
+              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Bottled%20Water%20-%20Pack"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+                />
+              </svg>
+              Order on WhatsApp
+            </a>
+          </div>
+
+          <!-- ===== HOUSEHOLD ===== -->
+          <div class="card" data-category="household">
+            <div class="card-media">
+              <span class="stock-tag">In Stock</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M4 4h16v16H4z" />
+                <path d="M4 10h16M10 4v16" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="cat">Household</span>
+              <span class="name">Detergent Powder — Carton (24 x 1kg)</span>
+              <span class="unit">Assorted Brands</span>
+              <span class="price">₦21,000 <small>/ carton</small></span>
+            </div>
+            <a
+              class="order-btn"
+              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Detergent%20Powder%20-%20Carton"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+                />
+              </svg>
+              Order on WhatsApp
+            </a>
+          </div>
+
+          <div class="card" data-category="household">
+            <div class="card-media">
+              <span class="stock-tag">In Stock</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M4 4h16v16H4z" />
+                <path d="M4 10h16M10 4v16" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="cat">Household</span>
+              <span class="name">Tissue Paper — Carton (48 rolls)</span>
+              <span class="unit">Soft Roll</span>
+              <span class="price">₦14,500 <small>/ carton</small></span>
+            </div>
+            <a
+              class="order-btn"
+              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Tissue%20Paper%20-%20Carton"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+                />
+              </svg>
+              Order on WhatsApp
+            </a>
+          </div>
+
+          <!-- ===== PERSONAL CARE ===== -->
+          <div class="card" data-category="care">
+            <div class="card-media">
+              <span class="stock-tag">In Stock</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="7" y="2" width="10" height="20" rx="3" />
+                <path d="M7 8h10" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="cat">Lopan made</span>
+              <span class="name">40-45 (6pcs)</span>
+              <span class="unit">rubber</span>
+              <span class="price">₦16,800 <small>/ carton</small></span>
+            </div>
+            <a
+              class="order-btn"
+              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Bathing%20Soap%20-%20Carton"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+                />
+              </svg>
+              Order on WhatsApp
+            </a>
+          </div>
+
+          <div class="card" data-category="care">
+            <div class="card-media">
+              <span class="stock-tag">In Stock</span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="7" y="2" width="10" height="20" rx="3" />
+                <path d="M7 8h10" />
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="cat">Personal Care</span>
+              <span class="name">Toothpaste — Carton (48 pcs)</span>
+              <span class="unit">Assorted Brands</span>
+              <span class="price">₦13,200 <small>/ carton</small></span>
+            </div>
+            <a
+              class="order-btn"
+              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Toothpaste%20-%20Carton"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+                />
+              </svg>
+              Order on WhatsApp
+            </a>
+          </div>
+        </div>
+        <!-- If a filter returns zero results, this message shows automatically (see JS) -->
+        <p
+          id="empty-msg"
+          style="
+            display: none;
+            text-align: center;
+            color: var(--ink-soft);
+            margin-top: 30px;
+          "
+        >
+          No items in this category yet — check back soon.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       WHY US / TRUST
+       ============================================================ -->
+    <section class="trust" id="why-us">
+      <div class="wrap">
+        <div class="trust-item">
+          <div class="num">100%</div>
+          <div class="lbl">Wholesale Pricing</div>
+        </div>
+        <div class="trust-item">
+          <div class="num">Same-Day</div>
+          <div class="lbl">Delivery Within Ilorin</div>
+        </div>
+        <div class="trust-item">
+          <div class="num">Direct</div>
+          <div class="lbl">Ordering via WhatsApp</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="contact-grid">
+          <div>
+            <h3>Visit or Order Remotely</h3>
+            <p class="lead">
+              Come see the full range in person, or place your order from
+              wherever you are.
+            </p>
+
+            <div class="contact-detail">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <div>
+                <div class="t">Address</div>
+                <!-- PLACEHOLDER — replace with real shop address -->
+                <div class="d">19,Bridge Street Idumota Lagos Island</div>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.67 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.31 1.85.54 2.81.67A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+              <div>
+                <div class="t">Phone / WhatsApp</div>
+                <!-- PLACEHOLDER — replace with real number -->
+                <div class="d">+234 800 000 0000</div>
+              </div>
+            </div>
+
+            <div class="social-row">
+              <a
+                class="social-btn wa"
+                href="https://wa.me/2348000000000"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+                  />
+                </svg>
+                WhatsApp
+              </a>
+              <!-- PLACEHOLDER LINKS — swap in your real Instagram / TikTok handles -->
+              <a
+                class="social-btn ig"
+                href="https://instagram.com/isholastore"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" />
+                </svg>
+                Instagram
+              </a>
+              <a
+                class="social-btn tt"
+                href="https://tiktok.com/@isholastore"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
+                TikTok
+              </a>
+            </div>
+          </div>
+
+          <!-- Google Maps embed — PLACEHOLDER location (Ilorin). Once the real
+             address is confirmed, search it on Google Maps, click Share > Embed
+             a map, and swap the src below. -->
+          <div class="map-box">
+            <iframe
+              src="https://www.google.com/maps?q=Ibrahim+Taiwo+Road,+Ilorin,+Kwara+State&output=embed"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+    <footer>
+      <div class="wrap">
+        <div class="foot-brand">Ishola Store</div>
+        <div class="foot-note">
+          &copy; <span id="year"></span> Ishola Store. All prices subject to
+          change without notice.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating WhatsApp button — always reachable, even while scrolling -->
+    <a
+      class="float-wa"
+      href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat on WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+        />
+      </svg>
+    </a>
+
+    <script>
+      // ============================================================
+      // JS #1 — Category filter
+      // Every filter button has a data-filter value that matches a
+      // data-category value on the product cards. Clicking a button
+      // shows only cards whose category matches (or all, for "all").
+      // ============================================================
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const cards = document.querySelectorAll(".card");
+      const emptyMsg = document.getElementById("empty-msg");
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // swap the active state on the buttons
+          filterButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const chosen = btn.dataset.filter;
+          let visibleCount = 0;
+
+          cards.forEach((card) => {
+            const matches =
+              chosen === "all" || card.dataset.category === chosen;
+            card.style.display = matches ? "" : "none";
+            if (matches) visibleCount++;
+          });
+
+          emptyMsg.style.display = visibleCount === 0 ? "block" : "none";
+        });
+      });
+
+      // ============================================================
+      // JS #2 — Close the mobile menu automatically after a link
+      // is tapped, so it doesn't stay open when the new section loads.
+      // ============================================================
+      const navToggle = document.getElementById("nav-toggle");
+      document.querySelectorAll("nav a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navToggle.checked = false;
+        });
+      });
+
+      // ============================================================
+      // JS #3 — Auto-update the footer year, so you never have to
+      // touch this file just to fix a copyright date.
+      // ============================================================
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <!-- This makes the page render correctly (and at the right zoom level) on phones -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ISHOLA STORE | Wholesale Prices, Direct to You</title>
+    <title>ISHOLA STORE | Wholesale Slippers, Direct to You</title>
     <meta
       name="description"
-      content="ISHOLA STORE — wholesale provisions, drinks, household & personal care items. Order directly on WhatsApp."
+      content="ISHOLA STORE — wholesale slippers at wholesale prices. Order directly on WhatsApp."
     />
 
     <style>
@@ -456,7 +456,7 @@
 
       /* ============================================================
      6. PRODUCTS SECTION
-     Category filter (pure JS toggle) + responsive card grid.
+     Responsive card grid — every item in stock, in one place.
      ============================================================ */
       .products {
         padding: 60px 0 70px;
@@ -483,33 +483,6 @@
         color: var(--ink-soft);
         margin-top: 8px;
         font-size: 14.5px;
-      }
-
-      .filters {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-        margin-bottom: 34px;
-      }
-      .filter-btn {
-        padding: 9px 18px;
-        border-radius: 999px;
-        border: 1.5px solid var(--line);
-        background: var(--white);
-        color: var(--ink-soft);
-        font-weight: 600;
-        font-size: 13.5px;
-        transition: all 0.15s ease;
-      }
-      .filter-btn:hover {
-        border-color: var(--gold-500);
-        color: var(--indigo-950);
-      }
-      .filter-btn.active {
-        background: var(--indigo-950);
-        border-color: var(--indigo-950);
-        color: var(--white);
       }
 
       .product-grid {
@@ -877,7 +850,7 @@
              format, no plus sign, no spaces. Example: 2348012345678 -->
           <a
             class="whatsapp-pill"
-            href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20place%20an%20order"
+            href="https://wa.me/2348101549872?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20place%20an%20order"
             target="_blank"
             rel="noopener"
           >
@@ -908,7 +881,7 @@
     <section class="hero">
       <div class="wrap hero-inner">
         <div>
-          <span class="hero-eyebrow">Ilorin's Trusted Wholesale Point</span>
+          <span class="hero-eyebrow">Ilorin's Wholesale Slipper Point</span>
           <h1>Buy in bulk, pay <em>wholesale</em> prices — every time.</h1>
           <p>
             Browse what's in stock right now. Tap any item and order straight
@@ -917,7 +890,7 @@
           <div class="hero-actions">
             <a
               class="btn btn-primary"
-              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20see%20today%27s%20price%20list"
+              href="https://wa.me/2348101549872?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20see%20today%27s%20price%20list"
               target="_blank"
               rel="noopener"
             >
@@ -1000,8 +973,7 @@
 
     <!-- ============================================================
        PRODUCTS
-       Each card has a data-category attribute. The filter buttons
-       below use plain JS to show/hide cards — no page reload.
+       Everything currently in stock, shown in one grid.
        ============================================================ -->
     <section class="products" id="products">
       <div class="wrap">
@@ -1014,21 +986,8 @@
           </p>
         </div>
 
-        <div class="filters" id="filters">
-          <button class="filter-btn active" data-filter="all">All Items</button>
-          <button class="filter-btn" data-filter="food">
-            Food &amp; Provisions
-          </button>
-          <button class="filter-btn" data-filter="drinks">
-            Drinks &amp; Beverages
-          </button>
-          <button class="filter-btn" data-filter="household">Household</button>
-          <button class="filter-btn" data-filter="care">Personal Care</button>
-        </div>
-
         <div class="product-grid" id="product-grid">
-          <!-- ===== FOOD & PROVISIONS ===== -->
-          <div class="card" data-category="food">
+          <div class="card">
             <div class="card-media">
               <span class="stock-tag">In Stock</span>
               <svg
@@ -1037,19 +996,21 @@
                 stroke="currentColor"
                 stroke-width="1.5"
               >
-                <path d="M20 12H4l1.5 8h13L20 12z" />
-                <path d="M6 12l1-6h10l1 6" />
+                <path
+                  d="M4 15c0-3.5 1.5-6 3.5-6 1 0 1.2 1 2.2 1s1.5-1.5 3-1.5c3 0 5.3 3 5.3 6.5 0 2-1 3.5-3 3.5H7c-2 0-3-1.5-3-3.5z"
+                />
+                <path d="M9 9c0-2 .8-4 2.5-4M13 9c.5-1.5 1.8-2.5 3-2.5" />
               </svg>
             </div>
             <div class="card-body">
-              <span class="cat">Food &amp; Provisions</span>
-              <span class="name">Rice — 50kg Bag</span>
-              <span class="unit">Local Parboiled</span>
-              <span class="price">₦58,000 <small>/ bag</small></span>
+              <span class="cat">Rubber Slippers</span>
+              <span class="name">Classic Rubber Slippers — Dozen</span>
+              <span class="unit">Mixed Sizes</span>
+              <span class="price">₦9,500 <small>/ dozen</small></span>
             </div>
             <a
               class="order-btn"
-              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Rice%20-%2050kg%20Bag"
+              href="https://wa.me/2348101549872?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Classic%20Rubber%20Slippers%20-%20Dozen"
               target="_blank"
               rel="noopener"
             >
@@ -1062,7 +1023,7 @@
             </a>
           </div>
 
-          <div class="card" data-category="food">
+          <div class="card">
             <div class="card-media">
               <span class="stock-tag">In Stock</span>
               <svg
@@ -1071,19 +1032,21 @@
                 stroke="currentColor"
                 stroke-width="1.5"
               >
-                <circle cx="12" cy="12" r="9" />
-                <path d="M8 12h8M12 8v8" />
+                <path
+                  d="M4 15c0-3.5 1.5-6 3.5-6 1 0 1.2 1 2.2 1s1.5-1.5 3-1.5c3 0 5.3 3 5.3 6.5 0 2-1 3.5-3 3.5H7c-2 0-3-1.5-3-3.5z"
+                />
+                <path d="M9 9c0-2 .8-4 2.5-4M13 9c.5-1.5 1.8-2.5 3-2.5" />
               </svg>
             </div>
             <div class="card-body">
-              <span class="cat">Food &amp; Provisions</span>
-              <span class="name">Vegetable Oil — Carton (12 x 1L)</span>
-              <span class="unit">Kings / Power Oil</span>
-              <span class="price">₦26,500 <small>/ carton</small></span>
+              <span class="cat">Palm Slippers</span>
+              <span class="name">Native Palm Slippers — Dozen</span>
+              <span class="unit">Mixed Sizes</span>
+              <span class="price">₦12,000 <small>/ dozen</small></span>
             </div>
             <a
               class="order-btn"
-              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Vegetable%20Oil%20-%20Carton"
+              href="https://wa.me/2348101549872?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Native%20Palm%20Slippers%20-%20Dozen"
               target="_blank"
               rel="noopener"
             >
@@ -1096,7 +1059,7 @@
             </a>
           </div>
 
-          <div class="card" data-category="food">
+          <div class="card">
             <div class="card-media">
               <span class="stock-tag">In Stock</span>
               <svg
@@ -1105,19 +1068,21 @@
                 stroke="currentColor"
                 stroke-width="1.5"
               >
-                <rect x="5" y="4" width="14" height="16" rx="2" />
-                <path d="M9 9h6M9 13h6" />
+                <path
+                  d="M4 15c0-3.5 1.5-6 3.5-6 1 0 1.2 1 2.2 1s1.5-1.5 3-1.5c3 0 5.3 3 5.3 6.5 0 2-1 3.5-3 3.5H7c-2 0-3-1.5-3-3.5z"
+                />
+                <path d="M9 9c0-2 .8-4 2.5-4M13 9c.5-1.5 1.8-2.5 3-2.5" />
               </svg>
             </div>
             <div class="card-body">
-              <span class="cat">Food &amp; Provisions</span>
-              <span class="name">Semovita — Carton (4 x 2kg)</span>
-              <span class="unit">Assorted Brands</span>
-              <span class="price">₦9,200 <small>/ carton</small></span>
+              <span class="cat">Fancy Slippers</span>
+              <span class="name">Fancy Slides — Dozen</span>
+              <span class="unit">Assorted Colours &amp; Sizes</span>
+              <span class="price">₦14,500 <small>/ dozen</small></span>
             </div>
             <a
               class="order-btn"
-              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Semovita%20-%20Carton"
+              href="https://wa.me/2348101549872?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Fancy%20Slides%20-%20Dozen"
               target="_blank"
               rel="noopener"
             >
@@ -1130,8 +1095,7 @@
             </a>
           </div>
 
-          <!-- ===== DRINKS & BEVERAGES ===== -->
-          <div class="card" data-category="drinks">
+          <div class="card">
             <div class="card-media">
               <span class="stock-tag">In Stock</span>
               <svg
@@ -1140,19 +1104,21 @@
                 stroke="currentColor"
                 stroke-width="1.5"
               >
-                <path d="M8 3h8l-1 6a3 3 0 0 1-6 0L8 3z" />
-                <path d="M12 12v9M8 21h8" />
+                <path
+                  d="M4 15c0-3.5 1.5-6 3.5-6 1 0 1.2 1 2.2 1s1.5-1.5 3-1.5c3 0 5.3 3 5.3 6.5 0 2-1 3.5-3 3.5H7c-2 0-3-1.5-3-3.5z"
+                />
+                <path d="M9 9c0-2 .8-4 2.5-4M13 9c.5-1.5 1.8-2.5 3-2.5" />
               </svg>
             </div>
             <div class="card-body">
-              <span class="cat">Drinks &amp; Beverages</span>
-              <span class="name">Coca-Cola — Crate (35cl x 24)</span>
-              <span class="unit">Plastic Bottles</span>
-              <span class="price">₦8,800 <small>/ crate</small></span>
+              <span class="cat">Children's Slippers</span>
+              <span class="name">Kids' Slippers — Dozen</span>
+              <span class="unit">Assorted Sizes</span>
+              <span class="price">₦7,000 <small>/ dozen</small></span>
             </div>
             <a
               class="order-btn"
-              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Coca-Cola%20-%20Crate"
+              href="https://wa.me/2348101549872?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Kids%27%20Slippers%20-%20Dozen"
               target="_blank"
               rel="noopener"
             >
@@ -1165,7 +1131,7 @@
             </a>
           </div>
 
-          <div class="card" data-category="drinks">
+          <div class="card">
             <div class="card-media">
               <span class="stock-tag">In Stock</span>
               <svg
@@ -1174,19 +1140,21 @@
                 stroke="currentColor"
                 stroke-width="1.5"
               >
-                <path d="M8 3h8l-1 6a3 3 0 0 1-6 0L8 3z" />
-                <path d="M12 12v9M8 21h8" />
+                <path
+                  d="M4 15c0-3.5 1.5-6 3.5-6 1 0 1.2 1 2.2 1s1.5-1.5 3-1.5c3 0 5.3 3 5.3 6.5 0 2-1 3.5-3 3.5H7c-2 0-3-1.5-3-3.5z"
+                />
+                <path d="M9 9c0-2 .8-4 2.5-4M13 9c.5-1.5 1.8-2.5 3-2.5" />
               </svg>
             </div>
             <div class="card-body">
-              <span class="cat">Drinks &amp; Beverages</span>
-              <span class="name">Bottled Water — Pack (75cl x 20)</span>
-              <span class="unit">Table Water</span>
-              <span class="price">₦2,400 <small>/ pack</small></span>
+              <span class="cat">Sport Slides</span>
+              <span class="name">Sport Slides — Dozen</span>
+              <span class="unit">Assorted Sizes</span>
+              <span class="price">₦16,000 <small>/ dozen</small></span>
             </div>
             <a
               class="order-btn"
-              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Bottled%20Water%20-%20Pack"
+              href="https://wa.me/2348101549872?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Sport%20Slides%20-%20Dozen"
               target="_blank"
               rel="noopener"
             >
@@ -1199,8 +1167,7 @@
             </a>
           </div>
 
-          <!-- ===== HOUSEHOLD ===== -->
-          <div class="card" data-category="household">
+          <div class="card">
             <div class="card-media">
               <span class="stock-tag">In Stock</span>
               <svg
@@ -1209,19 +1176,21 @@
                 stroke="currentColor"
                 stroke-width="1.5"
               >
-                <path d="M4 4h16v16H4z" />
-                <path d="M4 10h16M10 4v16" />
+                <path
+                  d="M4 15c0-3.5 1.5-6 3.5-6 1 0 1.2 1 2.2 1s1.5-1.5 3-1.5c3 0 5.3 3 5.3 6.5 0 2-1 3.5-3 3.5H7c-2 0-3-1.5-3-3.5z"
+                />
+                <path d="M9 9c0-2 .8-4 2.5-4M13 9c.5-1.5 1.8-2.5 3-2.5" />
               </svg>
             </div>
             <div class="card-body">
-              <span class="cat">Household</span>
-              <span class="name">Detergent Powder — Carton (24 x 1kg)</span>
-              <span class="unit">Assorted Brands</span>
-              <span class="price">₦21,000 <small>/ carton</small></span>
+              <span class="cat">Crocs-Style</span>
+              <span class="name">Crocs-Style Clogs — Dozen</span>
+              <span class="unit">Assorted Colours &amp; Sizes</span>
+              <span class="price">₦19,500 <small>/ dozen</small></span>
             </div>
             <a
               class="order-btn"
-              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Detergent%20Powder%20-%20Carton"
+              href="https://wa.me/2348101549872?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Crocs-Style%20Clogs%20-%20Dozen"
               target="_blank"
               rel="noopener"
             >
@@ -1234,7 +1203,7 @@
             </a>
           </div>
 
-          <div class="card" data-category="household">
+          <div class="card">
             <div class="card-media">
               <span class="stock-tag">In Stock</span>
               <svg
@@ -1243,19 +1212,21 @@
                 stroke="currentColor"
                 stroke-width="1.5"
               >
-                <path d="M4 4h16v16H4z" />
-                <path d="M4 10h16M10 4v16" />
+                <path
+                  d="M4 15c0-3.5 1.5-6 3.5-6 1 0 1.2 1 2.2 1s1.5-1.5 3-1.5c3 0 5.3 3 5.3 6.5 0 2-1 3.5-3 3.5H7c-2 0-3-1.5-3-3.5z"
+                />
+                <path d="M9 9c0-2 .8-4 2.5-4M13 9c.5-1.5 1.8-2.5 3-2.5" />
               </svg>
             </div>
             <div class="card-body">
-              <span class="cat">Household</span>
-              <span class="name">Tissue Paper — Carton (48 rolls)</span>
-              <span class="unit">Soft Roll</span>
-              <span class="price">₦14,500 <small>/ carton</small></span>
+              <span class="cat">Leather Slippers</span>
+              <span class="name">Leather Slip-Ons — Dozen</span>
+              <span class="unit">Assorted Sizes</span>
+              <span class="price">₦22,000 <small>/ dozen</small></span>
             </div>
             <a
               class="order-btn"
-              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Tissue%20Paper%20-%20Carton"
+              href="https://wa.me/2348101549872?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Leather%20Slip-Ons%20-%20Dozen"
               target="_blank"
               rel="noopener"
             >
@@ -1268,8 +1239,7 @@
             </a>
           </div>
 
-          <!-- ===== PERSONAL CARE ===== -->
-          <div class="card" data-category="care">
+          <div class="card">
             <div class="card-media">
               <span class="stock-tag">In Stock</span>
               <svg
@@ -1278,53 +1248,21 @@
                 stroke="currentColor"
                 stroke-width="1.5"
               >
-                <rect x="7" y="2" width="10" height="20" rx="3" />
-                <path d="M7 8h10" />
-              </svg>
-            </div>
-            <div class="card-body">
-              <span class="cat">Lopan made</span>
-              <span class="name">40-45 (6pcs)</span>
-              <span class="unit">rubber</span>
-              <span class="price">₦16,800 <small>/ carton</small></span>
-            </div>
-            <a
-              class="order-btn"
-              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Bathing%20Soap%20-%20Carton"
-              target="_blank"
-              rel="noopener"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor">
                 <path
-                  d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.5 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.27 1.18-1.75 1.24-.45.06-.98.08-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.6-4.26-3.77-.13-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.29.02.46-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.27-.11.53.15.26.66 1.09 1.42 1.77.98.87 1.8 1.14 2.06 1.27.26.13.41.11.56-.06.15-.18.65-.75.82-1.01.17-.26.34-.22.56-.13.22.08 1.44.68 1.68.8.24.13.4.19.46.3.06.13.06.7-.16 1.32z"
+                  d="M4 15c0-3.5 1.5-6 3.5-6 1 0 1.2 1 2.2 1s1.5-1.5 3-1.5c3 0 5.3 3 5.3 6.5 0 2-1 3.5-3 3.5H7c-2 0-3-1.5-3-3.5z"
                 />
-              </svg>
-              Order on WhatsApp
-            </a>
-          </div>
-
-          <div class="card" data-category="care">
-            <div class="card-media">
-              <span class="stock-tag">In Stock</span>
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <rect x="7" y="2" width="10" height="20" rx="3" />
-                <path d="M7 8h10" />
+                <path d="M9 9c0-2 .8-4 2.5-4M13 9c.5-1.5 1.8-2.5 3-2.5" />
               </svg>
             </div>
             <div class="card-body">
-              <span class="cat">Personal Care</span>
-              <span class="name">Toothpaste — Carton (48 pcs)</span>
-              <span class="unit">Assorted Brands</span>
-              <span class="price">₦13,200 <small>/ carton</small></span>
+              <span class="cat">Bathroom Slippers</span>
+              <span class="name">Bathroom Slippers — Dozen</span>
+              <span class="unit">Assorted Sizes</span>
+              <span class="price">₦6,000 <small>/ dozen</small></span>
             </div>
             <a
               class="order-btn"
-              href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Toothpaste%20-%20Carton"
+              href="https://wa.me/2348101549872?text=Hello%20Ishola%20Store%2C%20I%27d%20like%20to%20order%3A%20Bathroom%20Slippers%20-%20Dozen"
               target="_blank"
               rel="noopener"
             >
@@ -1337,18 +1275,6 @@
             </a>
           </div>
         </div>
-        <!-- If a filter returns zero results, this message shows automatically (see JS) -->
-        <p
-          id="empty-msg"
-          style="
-            display: none;
-            text-align: center;
-            color: var(--ink-soft);
-            margin-top: 30px;
-          "
-        >
-          No items in this category yet — check back soon.
-        </p>
       </div>
     </section>
 
@@ -1398,7 +1324,9 @@
               <div>
                 <div class="t">Address</div>
                 <!-- PLACEHOLDER — replace with real shop address -->
-                <div class="d">19,Bridge Street Idumota Lagos Island</div>
+                <div class="d">
+                  14 Ibrahim Taiwo Road, Ilorin, Kwara State, Nigeria
+                </div>
               </div>
             </div>
             <div class="contact-detail">
@@ -1422,7 +1350,7 @@
             <div class="social-row">
               <a
                 class="social-btn wa"
-                href="https://wa.me/2348000000000"
+                href="https://wa.me/2348101549872"
                 target="_blank"
                 rel="noopener"
               >
@@ -1475,6 +1403,7 @@
              address is confirmed, search it on Google Maps, click Share > Embed
              a map, and swap the src below. -->
           <div class="map-box">
+            cd
             <iframe
               src="https://www.google.com/maps?q=Ibrahim+Taiwo+Road,+Ilorin,+Kwara+State&output=embed"
               allowfullscreen=""
@@ -1503,7 +1432,7 @@
     <!-- Floating WhatsApp button — always reachable, even while scrolling -->
     <a
       class="float-wa"
-      href="https://wa.me/2348000000000?text=Hello%20Ishola%20Store"
+      href="https://wa.me/2348101549872?text=Hello%20Ishola%20Store"
       target="_blank"
       rel="noopener"
       aria-label="Chat on WhatsApp"
@@ -1517,37 +1446,7 @@
 
     <script>
       // ============================================================
-      // JS #1 — Category filter
-      // Every filter button has a data-filter value that matches a
-      // data-category value on the product cards. Clicking a button
-      // shows only cards whose category matches (or all, for "all").
-      // ============================================================
-      const filterButtons = document.querySelectorAll(".filter-btn");
-      const cards = document.querySelectorAll(".card");
-      const emptyMsg = document.getElementById("empty-msg");
-
-      filterButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          // swap the active state on the buttons
-          filterButtons.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-
-          const chosen = btn.dataset.filter;
-          let visibleCount = 0;
-
-          cards.forEach((card) => {
-            const matches =
-              chosen === "all" || card.dataset.category === chosen;
-            card.style.display = matches ? "" : "none";
-            if (matches) visibleCount++;
-          });
-
-          emptyMsg.style.display = visibleCount === 0 ? "block" : "none";
-        });
-      });
-
-      // ============================================================
-      // JS #2 — Close the mobile menu automatically after a link
+      // JS #1 — Close the mobile menu automatically after a link
       // is tapped, so it doesn't stay open when the new section loads.
       // ============================================================
       const navToggle = document.getElementById("nav-toggle");
@@ -1558,7 +1457,7 @@
       });
 
       // ============================================================
-      // JS #3 — Auto-update the footer year, so you never have to
+      // JS #2 — Auto-update the footer year, so you never have to
       // touch this file just to fix a copyright date.
       // ============================================================
       document.getElementById("year").textContent = new Date().getFullYear();
